@@ -1,0 +1,20 @@
+    var myObj = {
+      name: "",
+      yell: function() {
+        this.name = "Star Powerup";
+
+        var changeName = function(newName) {
+          this.name = newName;
+          console.log("`this` refers to the window here, because this nested function loses the myObj scope. console.log(this):")
+          console.log(this);
+          console.log("so we're setting the name '" + newName + "' on the window. console.log(window.name):");
+          console.log(window.name);
+          console.log("`window` contains the global scope, so you can log the variable itself. console.log(name):")
+          console.log(name);
+        };
+        changeName("Blue Shell");
+        console.log("`this` here refers to myObj, so doesn't show our modifications to window")
+        console.log(this);
+      }
+    };
+    myObj.yell();
