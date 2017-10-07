@@ -93,38 +93,27 @@ app.get("/scrape", function(req, res) {
 
 // This will get the articles we scraped from the mongoDB
 app.get("/articles", function(req, res) {
+
+
   // TODO: Finish the route so it grabs all of the articles
 
-  //Grab every doc in the Articles array 
-  Article.find({}, function(error, doc){
-    //Log errors
-    if(error){
-      console.log(error);
-    } else {
-      res.json(doc);
-    }
-  })
+
 });
 
 // This will grab an article by it's ObjectId
 app.get("/articles/:id", function(req, res) {
 
+
   // TODO
   // ====
+
   // Finish the route so it finds one article using the req.params.id,
+
   // and run the populate method with "note",
+
   // then responds with the article with the note included
-  
-  //use id passed as a parameter, prepare a query that finds the matching one in the db
-  //populate all of the notes associated with it 
-  //execute the query 
-  Article.findOne({ "_id": req.params.id }).populate("note").exec(function(error, doc){
-    if(error){
-      console.log(error);
-    } else {
-      res.json(doc);
-    }
-  })
+
+
 });
 
 // Create a new note or replace an existing note
@@ -140,27 +129,7 @@ app.post("/articles/:id", function(req, res) {
 
   // and update it's "note" property with the _id of the new note
 
-  //Create a new note and pass the req.body to the entry 
-  var newNote = new Note(req.body);
 
-  //And save the new note to the db
-  newNote.save(function(error, doc){
-    if(error){
-      console.log(error)
-    }
-    //Otherwise Use the article id to find and update it's note 
-    else {
-      Article.findOneAndUpdate({ "_id": req.params.id}, {"note": doc._id})
-      //execute the above query
-      .exec(function(err, doc){
-        if(err){
-          console.log(error)
-        } else {
-          res.json(doc)
-        }
-      })
-    }
-  })
 });
 
 
