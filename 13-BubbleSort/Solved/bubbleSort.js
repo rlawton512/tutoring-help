@@ -26,11 +26,11 @@ var sorted;
 function bubbleSort(arr) {
   // everytime we iterate over the array, we know at least the last value has
   // been sorted, so we don't have to iterate to that index again
-  var end = arr.length - 1;
+  // var end = arr.length - 1;
   // set flag to true, if we have to swap any values, the flag will be then set
   // to false
   sorted = true;
-  for (var i = 0; i < end; i++) {
+  for (var i = 0; i < arr.length; i++) {
     // if the value of the current index is less than the next index, we know
     // the list is not properly sorted and swap their positions.
     if (arr[i] > arr[i + 1]) {
@@ -42,11 +42,11 @@ function bubbleSort(arr) {
       sorted = false;
     }
   }
-  end--;
+  // end--;
 }
 
 do {
   bubbleSort(unsortedArr);
-} while (!sorted);
+} while (!sorted);//while sorted equals false 
 
 console.log(unsortedArr);
